@@ -1,0 +1,40 @@
+﻿@model IEnumerable<_3rd_Party_API_usage.Models.Deck>
+    <h1>List</h1>
+
+@Html.ActionLink("New Deck", "New", null, new { @class = "btn btn-primary" })
+<br />
+<table class="table table-striped">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LastCard.Image)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Deck_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remaining)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.LastCard.Image)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Deck_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remaining)
+            </td>
+            <td>
+                @Html.ActionLink("Draw", "Draw") |
+                @Html.ActionLink("Suffle", "Shuffle", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
