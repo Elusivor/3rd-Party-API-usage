@@ -1,0 +1,33 @@
+﻿@model _3rd_Party_API_usage.Models.DeckDisplayViewModel
+
+
+<h1>Deck - @Model.Deck.Deck_ID</h1>
+
+<a href="@Url.Action("List")" class="btn btn-primary">Back</a>
+<a href="@Url.Action("Draw", new { deckID = Model.Deck.Deck_ID })" class="btn btn-default">Draw</a>
+
+<div>
+    @if (Model.Error != null)
+    {
+        <p style="color:red; font-size:24px"><font>@Model.Error</font></p>
+    }
+    <div class="col-sm-12">
+        @if (Model.Deck.LastCard != null)
+        {
+            <div style="padding-top:10px">
+                <div class="col-sm-3">
+                    <img src="@Model.Deck.LastCard.Image" />
+                </div>
+                <div class="col-sm-9">
+                    <h2>@Model.Deck.LastCard.Value of @Model.Deck.LastCard.Suit</h2>
+                    <h3>@Model.Deck.Remaining cards remain not drawn</h3>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h3>To Draw a card, Click the Draw Button to draw from the deck.</h3>
+        }
+    </div>
+</div>
+<br />
